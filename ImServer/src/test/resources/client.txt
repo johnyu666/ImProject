@@ -1,0 +1,9 @@
+{"id":1,"loginName":"john","password":"123","nickName":"johnyu"}
+{"id":2,"loginName":"tom","password":"123","nickName":"tomli"}
+{"id":3,"loginName":"mike","password":"123","nickName":"mikeliu"}
+
+
+## redis中存储数据
+ hset clients 6f89 '{"id":1,"loginName":"john","password":"123","nickName":"johnyu"}'
+ hset clients f876 '{"id":2,"loginName":"tom","password":"123","nickName":"tomli"}'
+ hset clients 2cd3 '{"id":3,"loginName":"mike","password":"123","nickName":"mikeliu"}'

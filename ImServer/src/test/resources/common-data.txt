@@ -1,0 +1,4 @@
+{"code":0,"timestamp":0,"from":{"id":100,"loginName":"john","password":null,"nickName":null},"to":[{"id":1,"loginName":"c1","password":null,"nickName":null},{"id":2,"loginName":"c2","password":null,"nickName":null}],"content":null,"action":null}
+## 进入聊天室
+{"code":601,"timestamp":0,"from":{},"to":[],"content":"6f89","action":null}
+{"code":602,"timestamp":0,"from":{},"to":[],"content":"6f89","action":null}
