@@ -42,5 +42,8 @@ public class ClientService {
 
         return client;
     }
+    public void logout(String token){
+       long m= jedis.hdel("clients",token);
+    }
 
 }

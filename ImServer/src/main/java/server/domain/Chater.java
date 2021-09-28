@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 public class Chater implements Runnable {
+    private String token;
     private Client client;
     private Socket socket;
     private BufferedReader reader = null;
@@ -57,8 +58,8 @@ public class Chater implements Runnable {
                     final CommonData commonData = mapper.readValue(info, CommonData.class);
                     switch (commonData.getCode()) {
                         case 601://进入聊天室的处理代码
-                            String token = commonData.getContent();
-                            Client client = context.getClientService().loadClient(token);
+                            this.token = commonData.getContent();
+                            Client client = context.getClientService().loadClient(this.token);
                             if (client != null) {
                                 this.client = client;
                                 context.getChaters().add(this);
@@ -98,6 +99,9 @@ public class Chater implements Runnable {
         //线程结束前的收尾工作：
         System.out.println("客户：" + " 退出聊天！！！");
         context.getChaters().remove(this);
+        System.out.println("即将从redis中删除token:"+this.token);
+        context.getClientService().logout(this.token);
+
         sendStatus();
         //关闭socket
         try {
@@ -118,5 +122,13 @@ public class Chater implements Runnable {
         data.setCode(701);
         context.getChaters().forEach(chater -> data.getTo().add(chater.getClient()));
         context.getChaters().stream().forEach(chater -> chater.send(data));
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: localhost
+    host: athyu.com
     port: 6379
     lettuce:
       pool:
@@ -8,6 +8,17 @@ spring:
   cache:
     redis:
       time-to-live: 10m
-#    jedis:
-#      pool:
-#        max-active: 8
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 123
+    username: root
+    schema:
+      - classpath:schema.sql
+    data:
+      - classpath:data.sql
+    initialization-mode: always
+
+mybatis:
+  mapper-locations:
+    - classpath:cn/johnyu/client/manager/pojo/*.xml

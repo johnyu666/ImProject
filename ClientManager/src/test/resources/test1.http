@@ -1,0 +1,8 @@
+GET http://localhost:8080/login?loginName=john&password=123
+
+
+###
+GET http://localhost:8080/login?loginName=tom&password=123
+
+
+###
